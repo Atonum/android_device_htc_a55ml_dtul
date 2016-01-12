@@ -1,7 +1,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/htc/a55ml/BoardConfigVendor.mk
+-include vendor/htc/a55ml_dtul/BoardConfigVendor.mk
 
 TARGET_ARCH := arm64
 TARGET_NO_BOOTLOADER := true
@@ -20,7 +20,7 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 
 TARGET_BOOTLOADER_BOARD_NAME := a55ml_dtul
 
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidusb.pid=0x05E1
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidusb.pid=0x05E1 androidboot.mod1=normal
 BOARD_KERNEL_BASE := 0x4dffff00
 BOARD_KERNEL_PAGESIZE := 2048
 
@@ -31,8 +31,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x08c60000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-TARGET_PREBUILT_KERNEL := device/htc/a55ml/kernel
-
+TARGET_PREBUILT_KERNEL := device/htc/a55ml_dtul/kernel
 
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -46,6 +45,7 @@ RECOVERY_VARIANT := twrp
 #TWRP_EVENT_LOGGING := true
 TW_NO_SCREEN_BLANK := true
 TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone1/temp
+#TW_BOARD_CUSTOM_GRAPHICS := ../../../device/htc/a55ml_dtul/recovery/graphics_twrp.c
 DEVICE_RESOLUTION := 1440x2560
 RECOVERY_SDCARD_ON_DATA := true
 BOARD_HAS_NO_REAL_SDCARD := true
@@ -58,3 +58,7 @@ TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_NO_EXFAT_FUSE := true
 TW_NO_EXFAT := true
+#Cn theme
+TW_CUSTOM_THEME := device/htc/a55ml_dtul/recovery/twres-en
+TW_EXCLUDE_SUPERSU := true
+
